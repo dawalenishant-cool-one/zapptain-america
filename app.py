@@ -476,6 +476,7 @@ def match_audio(query_hashes, database):
 # =====================================================================
 DATABASE_PATH = os.path.join(SCRIPT_DIR, "database.pkl")
 
+@st.cache_resource
 def load_db_file():
     if os.path.exists(DATABASE_PATH):
         try:
@@ -489,6 +490,7 @@ def save_db_file(db):
     try:
         with open(DATABASE_PATH, "wb") as f:
             pickle.dump(db, f)
+        load_db_file.clear()
         return True
     except Exception as e:
         st.error(f"Error saving database: {e}")
