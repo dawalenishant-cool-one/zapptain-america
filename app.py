@@ -1,7 +1,6 @@
 import os
 import tempfile
 
-# Force temporary files to be created on the D: drive to bypass disk space errors on C:
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 D_TEMP_DIR = os.path.join(SCRIPT_DIR, "temp")
 os.makedirs(D_TEMP_DIR, exist_ok=True)
